@@ -17,6 +17,11 @@ public class Pickup : MonoBehaviour
     Transform originalParent;
     bool originalKinematic, originalUseGravity;
 
+
+    //Molli's additions:
+    GameObject heldObject = null;
+    bool holdingPainting = false;
+
     void Awake()
     {
         if (!cam) cam = Camera.main;
@@ -63,6 +68,9 @@ public class Pickup : MonoBehaviour
             var rb = hit.rigidbody;
             if (!rb) return;
 
+            //Molli's Additions
+            heldObject = hit.transform.gameObject;
+
             heldRb = rb;
             originalParent = rb.transform.parent;
             originalKinematic = rb.isKinematic;
@@ -77,16 +85,46 @@ public class Pickup : MonoBehaviour
                 rb.isKinematic = true;
                 rb.useGravity = false;
             }
+            //molli addition
+            if (heldObject.tag == "Painting")
+            {
+                Debug.Log("Holding Painting");
+                holdingPainting = true;
+            }
         }
     }
 
     void Drop()
     {
         if (!heldRb) return;
-        heldRb.transform.SetParent(originalParent, true);
-        heldRb.isKinematic = originalKinematic;
-        heldRb.useGravity = originalUseGravity;
-        heldRb = null;
+
+        //molli addition
+        if (holdingPainting)
+        {
+            
+            PaintingPlacement heldObjectPlacement = heldObject.GetComponent<PaintingPlacement>();
+            if (heldObjectPlacement.newPlacement != null)
+            {
+                heldRb.transform.SetParent(heldObjectPlacement.newPlacement, true);
+                heldRb.transform.localPosition = Vector3.zero;
+                heldRb.transform.localRotation = Quaternion.identity;
+                if (heldObjectPlacement.newPlacement == heldObjectPlacement.correctPlacement)
+                {
+                    heldObjectPlacement.correctTrigger();
+                }
+                heldRb = null;
+                heldObject = null;
+            }
+        }
+        else
+        {
+            heldRb.transform.SetParent(originalParent, true);
+            heldRb.isKinematic = originalKinematic;
+            heldRb.useGravity = originalUseGravity;
+            heldRb = null;
+            heldObject = null;
+        }
+        
     }
 
     void Throw()
