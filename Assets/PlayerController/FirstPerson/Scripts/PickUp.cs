@@ -108,10 +108,9 @@ public class Pickup : MonoBehaviour
                 heldRb.transform.SetParent(heldObjectPlacement.newPlacement, true);
                 heldRb.transform.localPosition = Vector3.zero;
                 heldRb.transform.localRotation = Quaternion.identity;
-                if (heldObjectPlacement.newPlacement == heldObjectPlacement.correctPlacement)
-                {
-                    heldObjectPlacement.correctTrigger();
-                }
+                
+                heldObjectPlacement.placed();
+                
                 heldRb = null;
                 heldObject = null;
             }
