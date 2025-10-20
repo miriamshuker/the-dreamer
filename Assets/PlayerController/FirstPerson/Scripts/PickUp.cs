@@ -20,6 +20,7 @@ public class Pickup : MonoBehaviour
 
     //Molli's additions:
     GameObject heldObject = null;
+    public Transform itemHoldPoint;
 
     void Awake()
     {
@@ -75,7 +76,17 @@ public class Pickup : MonoBehaviour
             originalKinematic = rb.isKinematic;
             originalUseGravity = rb.useGravity;
 
-            rb.transform.SetParent(holdPoint, true);
+
+            if(heldObject.tag == "Painting")
+            {
+                rb.transform.SetParent(holdPoint, true);
+            }
+            else
+            {
+                rb.transform.SetParent(itemHoldPoint, true);
+            }
+
+            //rb.transform.SetParent(holdPoint, true);
             rb.transform.localPosition = Vector3.zero;
             rb.transform.localRotation = Quaternion.identity;
 

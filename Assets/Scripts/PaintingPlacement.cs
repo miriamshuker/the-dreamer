@@ -21,7 +21,7 @@ public class PaintingPlacement : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "PaintingSpot")
         {
@@ -32,7 +32,7 @@ public class PaintingPlacement : MonoBehaviour
         }
     }
 
-    void OnCollisionExit(Collision col)
+    void OnTriggerExit(Collider col)
     {
         Debug.Log("I'm no longer colliding with a valid place");
         newPlacement = null;

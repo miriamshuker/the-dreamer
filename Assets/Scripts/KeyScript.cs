@@ -21,7 +21,7 @@ public class KeyScript : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Lock" && col.gameObject.transform == myLock)
         {
@@ -32,7 +32,7 @@ public class KeyScript : MonoBehaviour
         }
     }
 
-    void OnCollisionExit(Collision col)
+    void OnTriggerExit(Collider col)
     {
         if (placementIcon != null)
         {
