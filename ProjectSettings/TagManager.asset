@@ -7,6 +7,8 @@ TagManager:
   - CinemachineTarget
   - Painting
   - PaintingSpot
+  - Key
+  - Lock
   layers:
   - Default
   - TransparentFX

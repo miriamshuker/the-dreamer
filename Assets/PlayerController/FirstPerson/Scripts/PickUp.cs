@@ -20,7 +20,6 @@ public class Pickup : MonoBehaviour
 
     //Molli's additions:
     GameObject heldObject = null;
-    bool holdingPainting = false;
 
     void Awake()
     {
@@ -86,11 +85,8 @@ public class Pickup : MonoBehaviour
                 rb.useGravity = false;
             }
             //molli addition
-            if (heldObject.tag == "Painting")
-            {
-                Debug.Log("Holding Painting");
-                holdingPainting = true;
-            }
+
+            
         }
     }
 
@@ -99,30 +95,48 @@ public class Pickup : MonoBehaviour
         if (!heldRb) return;
 
         //molli addition
-        if (holdingPainting)
+
+        switch (heldObject.tag)
         {
+            case "Painting":
+                PaintingPlacement heldObjectPlacement = heldObject.GetComponent<PaintingPlacement>();
+                if (heldObjectPlacement.newPlacement != null)
+                {
+                    heldRb.transform.SetParent(heldObjectPlacement.newPlacement, true);
+                    heldRb.transform.localPosition = Vector3.zero;
+                    heldRb.transform.localRotation = Quaternion.identity;
+
+                    heldObjectPlacement.placed();
+                }
+                break;
+            case "Key":
+                KeyScript heldObjectKS = heldObject.GetComponent<KeyScript>();
+                if (heldObjectKS.correctLock)
+                {
+                    heldRb.transform.SetParent(heldObjectKS.myLock, true);
+                    heldRb.transform.localPosition = Vector3.zero;
+                    heldRb.transform.localRotation = Quaternion.identity;
+
+                    heldObjectKS.keyPlaced();
+                }
+                else
+                {
+                    heldRb.transform.SetParent(originalParent, true);
+                    heldRb.isKinematic = originalKinematic;
+                    heldRb.useGravity = originalUseGravity;
+                }
+                break;
+            default:
+                heldRb.transform.SetParent(originalParent, true);
+                heldRb.isKinematic = originalKinematic;
+                heldRb.useGravity = originalUseGravity;
+
+                break;
+        }
+        
+        heldRb = null;
+        heldObject = null;
             
-            PaintingPlacement heldObjectPlacement = heldObject.GetComponent<PaintingPlacement>();
-            if (heldObjectPlacement.newPlacement != null)
-            {
-                heldRb.transform.SetParent(heldObjectPlacement.newPlacement, true);
-                heldRb.transform.localPosition = Vector3.zero;
-                heldRb.transform.localRotation = Quaternion.identity;
-                
-                heldObjectPlacement.placed();
-                
-                heldRb = null;
-                heldObject = null;
-            }
-        }
-        else
-        {
-            heldRb.transform.SetParent(originalParent, true);
-            heldRb.isKinematic = originalKinematic;
-            heldRb.useGravity = originalUseGravity;
-            heldRb = null;
-            heldObject = null;
-        }
         
     }
 
