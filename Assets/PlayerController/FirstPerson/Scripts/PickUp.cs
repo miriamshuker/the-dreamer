@@ -125,6 +125,7 @@ public class Pickup : MonoBehaviour
                 if (heldObjectKS.correctLock)
                 {
                     heldRb.transform.SetParent(heldObjectKS.myLock, true);
+                    Debug.Log("CorrectLock");
                     heldRb.transform.localPosition = Vector3.zero;
                     heldRb.transform.localRotation = Quaternion.identity;
 

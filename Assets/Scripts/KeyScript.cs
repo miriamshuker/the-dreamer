@@ -48,6 +48,7 @@ public class KeyScript : MonoBehaviour
     {
         placementIcon.SetActive(false);
         placementIcon = null;
+        this.transform.localPosition = Vector3.zero;
         gameObject.layer = LayerMask.NameToLayer("Default");
         if (triggeredEvent != null)
         {
