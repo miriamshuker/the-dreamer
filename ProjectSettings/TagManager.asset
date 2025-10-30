@@ -9,6 +9,7 @@ TagManager:
   - PaintingSpot
   - Key
   - Lock
+  - Piece
   layers:
   - Default
   - TransparentFX

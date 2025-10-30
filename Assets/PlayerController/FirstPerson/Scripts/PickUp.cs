@@ -13,13 +13,13 @@ public class Pickup : MonoBehaviour
     public float throwForce = 6f;
     public bool setKinematicOnHold = true;
 
-    Rigidbody heldRb;
+    public Rigidbody heldRb;
     Transform originalParent;
     bool originalKinematic, originalUseGravity;
 
 
     //Molli's additions:
-    GameObject heldObject = null;
+    public GameObject heldObject = null;
     public Transform itemHoldPoint;
 
     void Awake()

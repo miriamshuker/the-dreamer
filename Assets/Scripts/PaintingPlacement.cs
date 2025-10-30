@@ -70,24 +70,22 @@ public class PaintingPlacement : MonoBehaviour
 
     public void missingPiecePlaced()
     {
-        if (newPlacement == correctPlacement)
+        placedMissingPiece = true;
+        completed = true;
+
+        //change the painting based on the added missing piece 
+        if (triggeredEvent != null)
         {
-            //do something 
-            placedMissingPiece = true;
-            completed = true;
-
-            //change the painting based on the added missing piece 
-            if (triggeredEvent != null)
-            {
-                triggeredEvent.Play();
-            }
-
-            if (correctlyPlaced)
-            {
-                completed = true;
-            }
-            myManager.checkPlacement();
+            triggeredEvent.Play();
         }
+
+        if (correctlyPlaced)
+        {
+            completed = true;
+        }
+        myManager.checkPlacement();
     }
 
 }
+
+
