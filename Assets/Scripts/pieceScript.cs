@@ -18,7 +18,7 @@ public class pieceScript : MonoBehaviour
     
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Painting" && col.gameObject.transform == myPainting)
+        if (col.gameObject.transform == myPainting)
         {
             Debug.Log("ItemSuccessfullyPlaced");
             puScript.heldRb = null;

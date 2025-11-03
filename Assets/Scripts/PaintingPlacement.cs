@@ -55,6 +55,12 @@ public class PaintingPlacement : MonoBehaviour
             correctlyPlaced = true;
             Debug.Log("I am Correctly Placed");
 
+            //activate certain things if placed
+            if (triggeredEvent != null)
+            {
+                triggeredEvent.Play();
+            }
+
             if (!hasMissingPiece) //if there is no piece missing from the painting, then it's complete!
             {
                 completed = true;
