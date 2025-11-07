@@ -21,6 +21,7 @@ public class Pickup : MonoBehaviour
     //Molli's additions:
     public GameObject heldObject = null;
     public Transform itemHoldPoint;
+    public Transform dandelionHP;
 
     [SerializeField] private GameObject defaultCursor;
     [SerializeField] private GameObject interactCursor;
@@ -64,39 +65,50 @@ public class Pickup : MonoBehaviour
 
     void Update()
     {
+            
+        if(!heldRb){
         float radius = 0.5f; 
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
 
-        if (Physics.SphereCast(ray, radius, out var hit, maxDistance, pickupLayers, QueryTriggerInteraction.Collide))
-        {
-            var hoveringObject = hit.transform.gameObject;
-            if(hoveringObject.tag == "Painting")
+            if (Physics.SphereCast(ray, radius, out var hit, maxDistance, pickupLayers, QueryTriggerInteraction.Collide))
             {
-                
-                defaultCursor.SetActive(false);
-                interactCursor.SetActive(false);
-                pickUpCursor.SetActive(true);
+                var hoveringObject = hit.transform.gameObject;
+                if (hoveringObject.tag == "Painting")
+                {
+
+                    defaultCursor.SetActive(false);
+                    interactCursor.SetActive(false);
+                    pickUpCursor.SetActive(true);
+                }
+                else if (hoveringObject.tag == "Interactable")
+                {
+                    defaultCursor.SetActive(false);
+                    interactCursor.SetActive(true);
+                    pickUpCursor.SetActive(false);
+
+                }
+                else
+                {
+                    defaultCursor.SetActive(false);
+                    interactCursor.SetActive(false);
+                    pickUpCursor.SetActive(true);
+
+                }
             }
             else
             {
-                defaultCursor.SetActive(false);
-                interactCursor.SetActive(true);
+                defaultCursor.SetActive(true);
+                interactCursor.SetActive(false);
                 pickUpCursor.SetActive(false);
-                
+
             }
-        }
-        else
-        {
-            defaultCursor.SetActive(true);
-            interactCursor.SetActive(false);
-            pickUpCursor.SetActive(false);
-            
-        }
+            }
     }
 
     void TryPickup()
     {
         if (!cam) return;
+        if (heldObject) return;
         float radius = 0.5f; 
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
 
@@ -113,12 +125,20 @@ public class Pickup : MonoBehaviour
             originalKinematic = rb.isKinematic;
             originalUseGravity = rb.useGravity;
 
+            
+            defaultCursor.SetActive(false);
+            interactCursor.SetActive(false);
+            pickUpCursor.SetActive(false);
 
-            if(heldObject.tag == "Painting")
+
+            if (heldObject.tag == "Painting")
             {
                 rb.transform.SetParent(holdPoint, true);
             }
-            else
+            else if (heldObject.name == "Dandelion_pickup")
+            {
+                rb.transform.SetParent(dandelionHP, true);
+            }else
             {
                 rb.transform.SetParent(itemHoldPoint, true);
             }
@@ -185,6 +205,10 @@ public class Pickup : MonoBehaviour
         
         heldRb = null;
         heldObject = null;
+        
+        defaultCursor.SetActive(true);
+        interactCursor.SetActive(false);
+        pickUpCursor.SetActive(false);
             
         
     }
