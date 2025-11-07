@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: sky_cloudy
+  m_Name: sky_
   m_Shader: {fileID: 104, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,19 +24,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BackTex:
-        m_Texture: {fileID: 2800000, guid: e6c7cf20575abe44292a41b511f51c9d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 71924f3cbe9f6b44bb1ee50d61481bd2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DownTex:
-        m_Texture: {fileID: 2800000, guid: 9d329d3d105a0104797b5b20f927a03b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 30922210be7296b4ab240f775a66f4a0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontTex:
-        m_Texture: {fileID: 2800000, guid: d20054ec0c0c7774d84e309603b8829b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89c781814266cf44790fc08f29521482, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LeftTex:
-        m_Texture: {fileID: 2800000, guid: 44015717bb2c7d44c93bd45b22e0405b, type: 3}
+        m_Texture: {fileID: 2800000, guid: de652fc1d755b2347967de138d0532df, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -44,11 +44,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightTex:
-        m_Texture: {fileID: 2800000, guid: ea18273fd2ce1c14690fc01988cbd06b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7769cf3675ff89f43923ae328007afb5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UpTex:
-        m_Texture: {fileID: 2800000, guid: 907e65458f8a254458b6880d534ef8b5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2976b707fe013c24a95e860fc635a10b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
