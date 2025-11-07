@@ -22,6 +22,11 @@ public class Pickup : MonoBehaviour
     public GameObject heldObject = null;
     public Transform itemHoldPoint;
 
+    [SerializeField] private GameObject defaultCursor;
+    [SerializeField] private GameObject interactCursor;
+    [SerializeField] private GameObject pickUpCursor;
+
+
     void Awake()
     {
         if (!cam) cam = Camera.main;
@@ -55,6 +60,38 @@ public class Pickup : MonoBehaviour
     void OnThrow(InputAction.CallbackContext _)
     {
         if (heldRb) Throw();
+    }
+
+    void Update()
+    {
+        float radius = 0.5f; 
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+
+        if (Physics.SphereCast(ray, radius, out var hit, maxDistance, pickupLayers, QueryTriggerInteraction.Collide))
+        {
+            var hoveringObject = hit.transform.gameObject;
+            if(hoveringObject.tag == "Painting")
+            {
+                
+                defaultCursor.SetActive(false);
+                interactCursor.SetActive(false);
+                pickUpCursor.SetActive(true);
+            }
+            else
+            {
+                defaultCursor.SetActive(false);
+                interactCursor.SetActive(true);
+                pickUpCursor.SetActive(false);
+                
+            }
+        }
+        else
+        {
+            defaultCursor.SetActive(true);
+            interactCursor.SetActive(false);
+            pickUpCursor.SetActive(false);
+            
+        }
     }
 
     void TryPickup()
