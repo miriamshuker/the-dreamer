@@ -55,6 +55,7 @@ namespace StarterAssets
 
         private void Start()
         {
+            Cursor.visible = false;
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<PlayerInput>();
 #if ENABLE_INPUT_SYSTEM
