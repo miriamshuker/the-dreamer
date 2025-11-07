@@ -11869,6 +11869,9 @@ MonoBehaviour:
   heldRb: {fileID: 0}
   heldObject: {fileID: 0}
   itemHoldPoint: {fileID: 1193265513}
+  defaultCursor: {fileID: 0}
+  interactCursor: {fileID: 0}
+  pickUpCursor: {fileID: 0}
 --- !u!114 &1386374476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12933,7 +12936,7 @@ Transform:
   m_GameObject: {fileID: 1517005082}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.13, y: 0, z: -16.24}
+  m_LocalPosition: {x: -16.95, y: 0, z: -10.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -17759,6 +17762,7 @@ GameObject:
   - component: {fileID: 2894547967323375635}
   - component: {fileID: 2331772301123879944}
   - component: {fileID: 6138743442907539632}
+  - component: {fileID: 6138743442907539633}
   m_Layer: 0
   m_Name: polySurface38
   m_TagString: Untagged
@@ -21134,6 +21138,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6138743442907539633
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871065513842161713}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7479997029363590899, guid: 2fc8fc22bbfaa6841a4f4622f2d88f0d, type: 3}
 --- !u!1 &6152843266296358328
 GameObject:
   m_ObjectHideFlags: 0
