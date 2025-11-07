@@ -18,7 +18,11 @@ TagManager:
   - Water
   - UI
   - PickUp
+<<<<<<< HEAD
   - camera_glow
+=======
+  - Interactable
+>>>>>>> 34a7d1577a91b5a8a9ca56cc41b93c270742c361
   - 
   - 
   - 
